@@ -9,16 +9,37 @@
     
 <body>
     <style lang="scss">
+        body {
+            background: #111111;
+        }
         svg {
             overflow: visible;
+            color: white;
+        }
+
+        rect {
+            fill: #C7CEEA;
+        }
+
+        text {
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+        .header{
+            font-size: 100px;
+            text-align: center;
+            background: -webkit-linear-gradient(#e6af5d, #450101);
+	        background-clip: text;
+	        -webkit-background-clip: text;
+  	        -webkit-text-fill-color: transparent;
         }
     </style>
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <h1>Views By Category</h1>
+    <div class="header">Views By Category</h1>
     <!-- Code Taken from https://www.tutorialsteacher.com/d3js/create-bar-chart-using-d3js on 2019-09-08 -->
-    <svg class="svg" width="1000" height="400"></svg>
+    <svg class="svg" width="1500" height="600"></svg>
 
     <script type="text/javascript">
         var data = "{{categories}}";
@@ -45,7 +66,7 @@
 
         g.append("g")
             .call(d3.axisLeft(yScale).tickFormat(function(d){
-                return idToCategory[d];
+                return idToCategory[d] || 'Misc.';
             }))
             .append("text")
             .attr("y", 6)
