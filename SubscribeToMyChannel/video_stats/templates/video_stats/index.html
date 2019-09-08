@@ -74,37 +74,32 @@
   <a class="btn btn-primary" href="/categorical/">Categorical</a>
 
   <div class="container">
-    <table id="statsTable sortable" class="table table-striped table boredered">
-        <thead>
-            <tr>
-                <th style="cursor:pointer">
-                    <div class="title table-header">Title</div>
-                </th>
-                <th style="cursor:pointer">
-                    <div class="Views table-header"> Views</div>
-                </th>
-                <th style="cursor:pointer">
-                    <div class="likes table-header">Likes</div>
-                </th>
-                <th style="cursor:pointer">
-                    <div class="dislikes table-header">Dislikes</div>
-                </th>
-                <th style="cursor:pointer">
-                    <div class="comment_count table-header"> Comment Count</div>
-                </th>
-            </tr>
+
+
+    <div class="row">
+      <div class="scrollable">
+        <table class="table table-striped table bordered">
+          <thead>
+          <tr>        
+            <th><div class="title">Title</div></th>
+            <th><div class="Views"> Views</div></th>
+            <th><div class="likes">Likes</div></th>
+            <th><div class="dislikes">Dislikes</div></th>
+            <th><div class="comment_count"> Comment Count</div></th>
+          </tr>
         </thead>
-        {% for video in videos %}
-        <tr class="item">
-          <td>
-            <div class="titleContainer">{{ video.title }}</div>
-          </td>
-          <td>{{ video.views }}</td>
-          <td>{{ video.likes }}</td>
-          <td>{{ video.dislikes }}</td>
-          <td>{{ video.comment_count }}</td>
-        </tr>
-        {% endfor %}
+          {% for video in videos %}
+          <tr>
+            <td>
+              <div class="titleContainer">{{ video.title }}</div>
+            </td>
+            <td>{{ video.views }}</td>
+            <td>{{ video.likes }}</td>
+            <td>{{ video.dislikes }}</td>
+            <td>{{ video.comment_count }}</td>
+          </tr>
+          {% endfor %}
+
     </table>
 
   </div>
@@ -176,6 +171,23 @@
       margin-left: 45px;
       margin-right: 45px;
       margin-bottom: 45px;
+    }
+
+  thead tr:nth-child(1) th{
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    }
+
+    .tableFixHead { 
+      overflow-y: auto; 
+      height: 100px; 
+    }
+
+    .scrollable {
+      height: 300px;
+      overflow: scroll;
     }
   </style>
 <!-- 
