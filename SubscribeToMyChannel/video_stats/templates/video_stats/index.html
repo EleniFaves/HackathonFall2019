@@ -1,0 +1,36 @@
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, intial-scale=1, shrink-to-fit=no">
+    
+</head>
+
+<body>
+    <style lang="scss">
+        .row {
+            display: flex;
+        }
+        .item {
+            margin-right: 10px;
+        }
+    </style>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <h1>Youtube Stats</h1>
+    {% for video in videos %}
+        <div class="row">
+            <div class="item title">{{ video.title }}</div>
+            <div class="item views">{{ video.views }}</div>
+            <div class="item likes">{{ video.likes }}</div>
+            <div class="item dislikes">{{ video.dislikes }}</div>
+            <div class="item comment_count">{{ video.comment_count }}</div>
+        </div>
+    {% endfor %}
+
+    <script>
+
+    </script>
+
+
+</body>

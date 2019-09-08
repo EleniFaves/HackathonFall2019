@@ -5,17 +5,12 @@ from django.template import loader
 from django.http import HttpResponse
 from django.views import generic
 from .models import Video
+import datetime
 
-class Video(generic.ListView):
+class video_stats(generic.ListView):
     model = Video
-    template_name = "video/index.html"
+    template_name = "video_stats/index.html"
 
-    # def get(self, request, *args, **kwargs):
-    #     context = {'our_counter' : Video.objects.get(pk=1)}
-    #     return render(request, self.template_name, context)
-
-    # def post(self, request, *args, **kwargs):
-    #     counter_object = Video.objects.get(pk=1)
-    #     counter_object.count += 1
-    #     counter_object.save()
-    #     return redirect('homepage')
+    def get(self, request, *args, **kwargs):
+        context = {'videos' : Video.objects.filter(date=datetime.date(2018, 1, 1))}
+        return render(request, self.template_name, context)
