@@ -42,7 +42,7 @@ class DayVideos(generic.ListView):
 
         year, month, day = self.getDate()
 
-        context = {'videos' : Video.objects.filter(date=datetime.date(year, month, day)), 'date' : datetime.date(year, month, day)}
+        context = {'videos' : Video.objects.filter(date=datetime.date(year, month, day)).order_by('-views'), 'date' : datetime.date(year, month, day)}
         return render(request, self.template_name, context)
 
 class VideosByCategory(generic.DetailView):
