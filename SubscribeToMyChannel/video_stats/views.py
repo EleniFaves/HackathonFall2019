@@ -85,6 +85,7 @@ class VideosByCategory(generic.DetailView):
                 "42": "Shorts",
                 "43": "Shows",
                 "44": "Trailers"
-            }
+            },
+            'date' : datetime.date(year, month, day)
         }
         return render(request, self.template_name, context)

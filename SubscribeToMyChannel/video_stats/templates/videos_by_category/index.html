@@ -19,6 +19,13 @@
 
         rect {
             fill: #C7CEEA;
+            transition: color 2s;
+        }
+
+        .best {
+            color: #e6af5d;
+            fill: currentColor;
+            stroke: currentColor;
         }
 
         text {
@@ -46,7 +53,6 @@
         var idToCategory = "{{idToCategory}}";
         data = JSON.parse(data.replace(/\(/g,'[').replace(/\)/g,']'));
         idToCategory = JSON.parse(idToCategory.replace(/&#39;/g,'\"').replace(/ &amp;/g,','));
-        console.log(idToCategory)
 
         var svg = d3.select("svg"), leftMargin = 200, topMargin = 100, width = svg.attr("width") - leftMargin, height = svg.attr("height") - topMargin;
 
@@ -58,7 +64,9 @@
                 .attr("transform", "translate(" + leftMargin / 2 + "," + topMargin / 2 + ")");
 
         yScale.domain(data.map(function(d) { return d[0]; }));
-        xScale.domain([0, d3.max(data, function(d) { return d[1]; })]);
+        maxX = d3.max(data, function(d) { return d[1]; });
+        bestY = data[data.length - 1];
+        xScale.domain([0, maxX]);
 
         g.append("g")
             .attr("transform", "translate(0," + height + ")")
@@ -74,13 +82,26 @@
             .attr("text-anchor", "end")
             .text("value");
 
+        var ticks = d3.selectAll(".tick text");
+
+        ticks.attr("class", function(d,i){
+            if (d === bestY[0]) {
+                console.log('yes');
+                return "best";
+            }
+        });
+
         g.selectAll(".bar")
             .data(data)
             .enter().append("rect")
             .attr("class", "bar")
+            .classed("best", (d) => { return d[1] === maxX })
             .attr("x", 0 )
             .attr("y", function(d) { return yScale(d[0]); })
             .attr("height", yScale.bandwidth() - 5)
+            .attr('width', 0)
+            .transition()
+            .duration(2000)
             .attr("width", function(d) { return xScale(d[1]); });
     </script>
 
