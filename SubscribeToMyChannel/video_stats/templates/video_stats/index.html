@@ -7,26 +7,51 @@
 
 <body>
     <style lang="scss">
-        .row {
-            display: flex;
+        #videos {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+}
+
+        #videos td, #videos th {
+        border: 1px solid #ddd;
+        padding: 8px;
+}
+        #videos th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #aaa;
+            color:black;
         }
-        .item {
-            margin-right: 10px;
-        }
+    
     </style>
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <h1>Youtube Stats</h1>
-    {% for video in videos %}
-        <div class="row">
-            <div class="item title">{{ video.title }}</div>
-            <div class="item views">{{ video.views }}</div>
-            <div class="item likes">{{ video.likes }}</div>
-            <div class="item dislikes">{{ video.dislikes }}</div>
-            <div class="item comment_count">{{ video.comment_count }}</div>
-        </div>
-    {% endfor %}
+
+    <table id="videos">
+            <tr>
+                <th>Title</th>
+                <th>Views</th>
+                <th>Likes</th>
+                <th>Dislikes</th>
+                <th>Comment Count</th>
+            </tr> 
+
+            <tbody>
+                {% for video in videos %}
+                <tr>
+                    <td>{{ video.title }}</td>
+                    <td>{{ video.views }}</td>
+                    <td>{{ video.likes }}</td>
+                    <td>{{ video.dislikes }}</td>
+                    <td>{{ video.comment_count }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+    </table>
 
     <script>
 
