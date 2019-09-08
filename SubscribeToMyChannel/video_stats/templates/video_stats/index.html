@@ -69,13 +69,12 @@
   <!-- Checking if jQuery works .. -->
   <!-- <button class="btn-success" onclick="$(this).hide();"> Click me! </button> -->
 
-  <div class="header">Youtube<span class="header2">Stats</span></div>
+  <div class="header">YouTube<span class="header2"><a class=" statss" href="/categorical/">Stats</a></span></div>
+  
   <div class="date">{{ date }}</div>
-  <a class="btn btn-primary" href="/categorical/">Categorical</a>
+  
 
-  <div class="container">
-
-
+ <div class="container">
     <div class="row">
       <div class="scrollable">
         <table class="table table-striped table bordered">
@@ -99,9 +98,7 @@
             <td>{{ video.comment_count }}</td>
           </tr>
           {% endfor %}
-
     </table>
-
   </div>
 
   <style lang="scss">
@@ -155,6 +152,9 @@
       color: white;
       font-weight: bolder;
     }
+    .stats{
+     
+    }
     .header2 {
       font-size: 30px;
       font-weight: normal;
@@ -168,16 +168,12 @@
       padding: 25px;
       padding-right: 45px;
     }
-    .container {
-      margin-left: 45px;
-      margin-right: 45px;
-      margin-bottom: 45px;
-    }
+    
 
   thead tr:nth-child(1) th{
     background: white;
     position: sticky;
-    top: 0;
+    top: -10;
     z-index: 10;
     }
 
@@ -187,7 +183,7 @@
     }
 
     .scrollable {
-      height: 300px;
+      height: 50vh;
       overflow: scroll;
     }
   </style>
