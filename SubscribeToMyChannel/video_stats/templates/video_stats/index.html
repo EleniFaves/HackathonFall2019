@@ -1,63 +1,102 @@
 <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, intial-scale=1, shrink-to-fit=no">
-    
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, intial-scale=1, shrink-to-fit=no"
+  />
 </head>
 
 <body>
-    <style lang="scss">
-        #videos {
-            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-}
+  <style lang="scss">
+    #videos {
+      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
 
-        #videos td, #videos th {
-        border: 1px solid #ddd;
-        padding: 8px;
-}
-        #videos th {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: left;
-            background-color: #aaa;
-            color:black;
-        }
-    
-    </style>
+    #videos td,
+    #videos th {
+      background: #ffffff;
+      padding: 8px;
+      color: black;
+    }
+    #videos th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      color: #7b7979;
+      border-bottom: 1px solid #b7b7b7;
+    }
+    .title {
+      text-align: center;
+    }
+    .likes {
+      color: #1ec192;
+    }
+    .dislikes {
+      color: #ed4f33;
+    }
+    body {
+      background-color: #f1f4f6;
+      margin: 0;
+    }
+    .header {
+      font-size: 80px;
+      text-align: center;
+      background-color: #35495d;
+      color: white;
+      font-weight: bolder;
+    }
+    .header2 {
+      font-size: 30px;
+      font-weight: normal;
+    }
+    .date {
+      position: relative;
+      text-align: right;
+      font-size: 20px;
+      font-weight: bold;
+      color: #2f81b7;
+      padding: 25px;
+      padding-right: 45px;
+    }
+    .container {
+      margin-left: 45px;
+      margin-right: 45px;
+      margin-bottom: 45px;
+    }
+  </style>
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <h1>Youtube Stats</h1>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <div class="header">Youtube<span class="header2">Stats</span></div>
+  <div class="date">{{ date }}</div>
 
-    <h2 id="date">{{ date }}</h2>
-
+  <div class="container">
     <table id="videos">
-            <tr>
-                <th>Title</th>
-                <th>Views</th>
-                <th>Likes</th>
-                <th>Dislikes</th>
-                <th>Comment Count</th>
-            </tr> 
+      <tr>
+        <th><div class="title">Title</div></th>
+        <th>Views</th>
+        <th><div class="likes">Likes</div></th>
+        <th><div class="dislikes">Dislikes</div></th>
+        <th>Comment Count</th>
+      </tr>
 
-            <tbody>
-                {% for video in videos %}
-                <tr>
-                    <td>{{ video.title }}</td>
-                    <td>{{ video.views }}</td>
-                    <td>{{ video.likes }}</td>
-                    <td>{{ video.dislikes }}</td>
-                    <td>{{ video.comment_count }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
+      <tbody>
+        {% for video in videos %}
+        <tr>
+          <td>
+            <div class="titleContainer">{{ video.title }}</div>
+          </td>
+          <td>{{ video.views }}</td>
+          <td>{{ video.likes }}</td>
+          <td>{{ video.dislikes }}</td>
+          <td>{{ video.comment_count }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
     </table>
+  </div>
 
-    <script>
-
-    </script>
-
-
+  <script></script>
 </body>
