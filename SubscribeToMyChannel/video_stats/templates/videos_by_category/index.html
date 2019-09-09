@@ -54,6 +54,8 @@
         data = JSON.parse(data.replace(/\(/g,'[').replace(/\)/g,']'));
         idToCategory = JSON.parse(idToCategory.replace(/&#39;/g,'\"').replace(/ &amp;/g,','));
 
+        // Some code taken from https://www.tutorialsteacher.com/d3js/create-bar-chart-using-d3js
+        // on 2019-9-8 on how to create a bar chart using d3
         var svg = d3.select("svg"), leftMargin = 200, topMargin = 100, width = svg.attr("width") - leftMargin, height = svg.attr("height") - topMargin;
 
 
@@ -82,11 +84,12 @@
             .attr("text-anchor", "end")
             .text("value");
 
+        // Code for classing ticks https://stackoverflow.com/questions/38919685/d3-adding-class-to-tick-on-y-axis-depending-on-the-x-axis-value
+        // taken on 2019-9-8
         var ticks = d3.selectAll(".tick text");
 
         ticks.attr("class", function(d,i){
             if (d === bestY[0]) {
-                console.log('yes');
                 return "best";
             }
         });
